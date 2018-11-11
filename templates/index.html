@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="jumbotron">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg text-center" role="button" onClick="/flask_Mongo.py">Scrape new Data</a></p>
+        </div>
+      </div> 
+     
+    <div class="container">
+      <h3>Latest Mars News</h3> 
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>News headline code</h4>
+                <p>
+                    {{ mars_all.news_title }}
+                </p> 
+                <p>{{ mars_all.news_paragraph }}</li>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h3>Featured Mars Image</h3>
+                <img src="{{ mars_all.featured_image_url }}" alt="{{ mars_all.featured_image_url }}">
+            </div>
+            <div class="col-sm-4">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h4>Current Weather on Mars</h4>
+                            <p>{{ mars_all.mars_weather }}</p>
+                        </div>    
+                    </div>    
+                </div>
+                <div class="col-sm-12">
+                    <h4>Mars facts</h4>
+                    <p>
+                        {{ mars_all.mars_facts }}
+                    </p>
+                    <p>
+                       {% for hemisphere in mars_hemispheres %}
+                       <li>{{ hemisphere.hemisphere_title }}: <img src="{{ hemisphere.image_link }}" alt="{{ hemisphere.image_link }}"></li>
+                        {% endfor %}
+                    </p>
+                </div>
+
+            </div>
+
+        </div>  
+    </div>
+ 
+</body>
+</html>
